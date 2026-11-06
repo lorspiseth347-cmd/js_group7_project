@@ -1,10 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project</title>
-    <!-- <link rel="stylesheet" href="style.css" /> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Shop</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,57 +14,41 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
-  </head>
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top"
-      style="height: auto"
-    >
+     <style>
+      .card { transition: 0.3s; }
+      .card:hover { transform: translateY(-8px); }
+      .icon-box {
+        width: 60px; height: 60px; border-radius: 50%;
+        background: rgb(8, 8, 54);
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 12px;
+      }
+      .step-num {
+        width: 48px; height: 48px; border-radius: 50%;
+        background: #ffc107; color: #000; font-weight: bold; font-size: 20px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 12px;
+      }
+      .price-card.featured { border: 2px solid #ffc107; }
+    </style>
+</head>
+<body><nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top" style="height: auto">
       <div class="container-fluid py-1">
-        <a class="navbar-brand fw-bold" href="#"
-          ><span class="text-warning py-1 fs-2">CAR.</span> Shop</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a class="navbar-brand fw-bold" href="home.html"><span class="text-warning py-1 fs-2">CAR.</span> Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link hover fw-bold active"
-                aria-current="page"
-                href="home.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="sopattra.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="peakdey.html">Service</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="mengly.html">Contact</a>
-            </li>
+            <li class="nav-item"><a class="nav-link hover fw-bold" href="home.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link hover fw-bold" href="sopattra.html">About</a></li>
+            <li class="nav-item"><a class="nav-link hover fw-bold active" aria-current="page" href="peakdey.html">Service</a></li>
+            <li class="nav-item"><a class="nav-link hover fw-bold" href="mengly.html">Contact</a></li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link hover fw-bold dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Car Type
-              </a>
+              <a class="nav-link hover fw-bold dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Car Type</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Avatar</a></li>
                 <li><a class="dropdown-item" href="#">BMW</a></li>
@@ -74,30 +57,238 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <a class="text-dark px-1" href="#">
-              <i class="bi bi-person-fill-gear fs-4"></i
-            ></a>
-            <a class="text-dark px-2" href="#"
-              ><i class="bi bi-bag-check-fill fs-4"></i
-            ></a>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <a class="text-dark px-1" href="#"><i class="bi bi-person-fill-gear fs-4"></i></a>
+            <a class="text-dark px-2" href="#"><i class="bi bi-bag-check-fill fs-4"></i></a>
           </form>
         </div>
       </div>
     </nav>
-
-    
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+     <div class="container-fluid" style="background-color: rgb(8, 8, 54)">
+      <div class="container text-center py-5">
+        <span class="bg-warning badge">Our Services</span>
+        <h1 class="text-white fw-bold mt-3" style="font-size: 48px">
+          More Than Just <span class="text-warning">Car Rental</span>
+        </h1>
+        <p class="text-white fs-5 mx-auto" style="max-width: 640px">
+          Self-drive, with a driver, airport pickup or a trip to Siem Reap.
+          Pick the service that fits your journey.
+        </p>
+        <a href="#services" class="btn btn-warning px-4 fw-bold py-2">View Services</a>
+        <a href="mengly.html" class="btn btn-secondary ms-3 px-4 py-2 fw-bold">Contact Us</a>
+      </div>
+    </div>
+    <div class="container py-5 text-center" id="services">
+      <h1 class="fw-bold">What We Offer</h1>
+      <p class="text-muted">Choose the service that fits your trip.</p>
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-key-fill fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Self-Drive Rental</h4>
+            <p class="px-3">Take the keys and drive on your own schedule. Daily, weekly or monthly.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-person-badge-fill fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Car with Driver</h4>
+            <p class="px-3">Relax in the back seat. Our professional drivers know every road in the city.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-airplane-fill fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Airport Pickup &amp; Drop-off</h4>
+            <p class="px-3">We track your flight and wait for you at Phnom Penh or Siem Reap airport.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-heart-fill fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Wedding &amp; Event Cars</h4>
+            <p class="px-3">Luxury cars decorated for weddings, parties and special occasions.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-map-fill fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Tour &amp; Travel Packages</h4>
+            <p class="px-3">Angkor Wat, Kampot, Sihanoukville and more, with car, driver and fuel included.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3">
+          <div class="card bg-light shadow py-4 h-100">
+            <div class="icon-box"><i class="bi bi-truck fs-3 text-warning"></i></div>
+            <h4 class="fw-bold">Delivery to Your Door</h4>
+            <p class="px-3">We bring the car to your hotel, home or office, and collect it when you finish.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-light py-5">
+      <div class="container text-center">
+        <h1 class="fw-bold">How It Works</h1>
+        <p class="text-muted">Rent a car in 4 easy steps.</p>
+        <div class="row mt-4">
+          <div class="col-12 col-md-6 col-lg-3 mt-3">
+            <div class="step-num">1</div>
+            <h5 class="fw-bold">Choose a Car</h5>
+            <p class="text-muted">Browse our cars and pick the one you like.</p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mt-3">
+            <div class="step-num">2</div>
+            <h5 class="fw-bold">Book Online</h5>
+            <p class="text-muted">Select your dates and location, then confirm.</p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mt-3">
+            <div class="step-num">3</div>
+            <h5 class="fw-bold">Pick Up the Car</h5>
+            <p class="text-muted">Collect it at our office or get it delivered.</p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mt-3">
+            <div class="step-num">4</div>
+            <h5 class="fw-bold">Enjoy the Road</h5>
+            <p class="text-muted">Drive safely and return the car on time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="container py-5 text-center">
+      <h1 class="fw-bold">Rental Packages</h1>
+      <p class="text-muted">Simple prices. No hidden charges.</p>
+      <div class="row mt-4">
+        <div class="col-12 col-md-4 mt-3">
+          <div class="card price-card shadow py-4 h-100">
+            <h4 class="fw-bold">Daily</h4>
+            <p><span class="fw-bold fs-1">50$</span>/day</p>
+            <ul class="list-unstyled text-start px-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Economy &amp; sedan cars</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> 150 km per day</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Basic insurance</li>
+            </ul>
+            <div class="px-4"><a href="home.html" class="btn btn-outline-secondary fw-bold w-100">Book Now</a></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mt-3">
+          <div class="card price-card featured shadow py-4 h-100">
+            <span class="bg-warning fw-bold badge position-absolute top-0 start-50 translate-middle">Most Popular</span>
+            <h4 class="fw-bold">Weekly</h4>
+            <p><span class="fw-bold fs-1">300$</span>/week</p>
+            <ul class="list-unstyled text-start px-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> SUV &amp; premium cars</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Unlimited km</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Full insurance</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Free delivery</li>
+            </ul>
+            <div class="px-4"><a href="home.html" class="btn btn-warning fw-bold w-100">Book Now</a></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mt-3">
+          <div class="card price-card shadow py-4 h-100">
+            <h4 class="fw-bold">With Driver</h4>
+            <p><span class="fw-bold fs-1">80$</span>/day</p>
+            <ul class="list-unstyled text-start px-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Professional driver</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> Fuel included</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-warning"></i> City &amp; province trips</li>
+            </ul>
+            <div class="px-4"><a href="home.html" class="btn btn-outline-secondary fw-bold w-100">Book Now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="container pb-5" style="max-width: 800px">
+      <h1 class="fw-bold text-center">Common Questions</h1>
+      <p class="text-muted text-center">Quick answers before you book.</p>
+      <div class="accordion mt-4" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+              What do I need to rent a car?
+            </button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+            <div class="accordion-body">A valid driving license, your ID or passport, and a deposit. Foreign visitors need an international driving permit.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+              Can I cancel my booking?
+            </button>
+          </h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">Yes. Cancel free of charge up to 24 hours before pick-up.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+              Is fuel included?
+            </button>
+          </h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">Fuel is included only with driver packages. For self-drive, return the car with the same fuel level.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q4">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#a4">
+              What if the car breaks down?
+            </button>
+          </h2>
+          <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">Call our 24/7 support line. We send help or a replacement car as fast as possible.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid py-5 text-center" style="background-color: rgb(8, 8, 54)">
+      <h2 class="text-white fw-bold">Ready to hit the road?</h2>
+      <p class="text-white fs-5">Book your car today or ask us about a custom trip.</p>
+      <a href="home.html" class="btn btn-warning px-4 fw-bold py-2">Explore Car</a>
+      <a href="mengly.html" class="btn btn-secondary ms-3 px-4 py-2 fw-bold">Contact Us</a>
+    </div>
+    <footer class="container-fluid" style="background-color: rgb(8, 8, 54); border-top: 1px solid rgba(255,255,255,0.15)">
+      <div class="px-3 py-4">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <a class="navbar-brand fw-bold" href="home.html"><span class="text-warning py-1 fs-1">CAR.</span> Shop</a>
+            <p class="text-white">Your trusted partner for comfortable, affordable and reliable car rentals.</p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-2">
+            <div class="py-2">
+              <ul style="list-style-type: none">
+                <h4 class="fw-bold text-white">Quick Links</h4>
+                <li class="mt-2"><a class="text-white fs-6 text-decoration-none" href="home.html">Home</a></li>
+                <li class="mt-2"><a class="text-white fs-6 text-decoration-none" href="sopattra.html">About</a></li>
+                <li class="mt-2"><a class="text-white fs-6 text-decoration-none" href="service2.html">Service</a></li>
+                <li class="mt-2"><a class="text-white fs-6 text-decoration-none" href="mengly.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="m-2 text-white">
+              <ul style="list-style-type: none">
+                <h4 class="fw-bold">Contact Us</h4>
+                <li class="mt-3"><i class="bi bi-telephone-fill"></i> +855 889 220 960</li>
+                <li class="mt-3"><i class="bi bi-envelope"></i> admin3322@gmail.com</li>
+                <li class="mt-3"><i class="bi bi-geo-alt"></i> Phnom Penh, Cambodia</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-2">
+            <div class="py-2 text-white">
+              <ul style="list-style-type: none">
+                <h4 class="fw-bold">Follow Us</h4>
+                <li class="mt-2"><i class="bi bi-facebook"></i> Facebook</li>
+                <li class="mt-2"><i class="bi bi-instagram"></i> Instagram</li>
+                <li class="mt-2"><i class="bi bi-telegram"></i> Telegram</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
 </html>
-
-<style></style>
