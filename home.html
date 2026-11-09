@@ -83,9 +83,62 @@
             <a class="text-dark px-1" href="#">
               <i class="bi bi-person-fill-gear fs-4"></i
             ></a>
-            <a class="text-dark px-2" href="#"
-              ><i class="bi bi-bag-check-fill fs-4"></i
-            ></a>
+            <a class="text-dark ms-1" href="#"></a>
+              <div
+                
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                 <i class="bi bi-bag-check-fill fs-4"></i
+            >
+              </div>
+
+              <div
+                class="offcanvas offcanvas-end"
+                tabindex="-1"
+                id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel"
+              >
+                <div class="offcanvas-header">
+                  <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                  <button
+                    type="button"
+                    class="btn-close text-reset"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div class="card">
+                   <div class="row">
+                    <div class="col-5">
+                      <img src="picture/Black Rolls-Royce Phantom Showroom Reflection.png" class="img-fluid p-2 rounded" alt="">
+                    </div>
+                    <div class="col-5">
+                      <h5 class="py-3">
+                        Phantom VIII
+                      </h5>
+                      <div class="row">
+                        <div class="col-6">
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                     <div class="p-1 mt-4 me-2">
+                       <div class="card text-center">
+                        <i class="bi bi-trash3"></i>
+                      </div>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+            
+            </a>
           </form>
         </div>
       </div>
@@ -185,10 +238,10 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card" style="width: auto">
+          <div class="card card1" style="width: auto">
             <img
               src="picture/Black Rolls-Royce Phantom Showroom Reflection.png"
-              class="card-img-top"
+              class="card card1-img-top"
               alt="..."
             />
             <span
@@ -237,7 +290,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card" style="width: auto">
+          <div class="card card1" style="width: auto">
             <img
               src="picture/Rolls-Royce Dawn at Sunset.png"
               class="card-img-top"
@@ -290,7 +343,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card" style="width: auto">
+          <div class="card card1" style="width: auto">
             <img
               src="picture/Gemini_Generated_Image_ijcbspijcbspijcb.jpg"
               class="card-img-top"
@@ -551,10 +604,14 @@
 </html>
 
 <style>
-  .card:hover {
+  .card1:hover {
     transform: translateY(-8px);
   }
-  .card {
+  .card1 {
     transition: 0.3s;
+  }
+  .bi-trash3:hover{
+    background-color: red;
+    color: white;
   }
 </style>
