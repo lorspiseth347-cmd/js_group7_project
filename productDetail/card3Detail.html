@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental Detail</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      body {
+        background: #f5f7fa;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background: #101828;
+      }
+
+      .navbar-brand {
+        font-size: 25px;
+        font-weight: bold;
+        color: #ffc107;
+      }
+
+      .detail-container {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      .car-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .car-title {
+        font-size: 32px;
+        font-weight: bold;
+      }
+
+      .price {
+        color: #ffc107;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .spec-box {
+        transition: 0.2s;
+        background: white;
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .spec-box i {
+        font-size: 25px;
+        color: #ffc107;
+      }
+      .spec-box:hover {
+        transform: translateY(-5px);
+      }
+
+      .booking-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .booking-card h4 {
+        font-weight: bold;
+      }
+
+      .btn-book {
+        background: #ffc107;
+        border: none;
+        padding: 12px;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      .btn-book:hover {
+        background: #e5ac00;
+      }
+
+      .section-title {
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+     <div class="container mt-2">
+        <button class="btn btn-secondary"><a href="../home.html" class="text-decoration-none text-white">Back</a></button>
+    </div>
+    <!-- Product Detail -->
+    <div class="container detail-container">
+      <div class="row g-4">
+        <!-- Left Side -->
+        <div class="col-lg-8">
+          <!-- Car Image -->
+          <img
+            src="../picture/Gemini_Generated_Image_ijcbspijcbspijcb.jpg"
+            class="img-fluid"
+            alt="Luxury Car"
+          />
+
+          <div
+            class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2"
+          >
+            <div>
+              <h2 class="car-title">Dawn</h2>
+              <p class="text-secondary">
+                <i class="bi bi-geo-alt-fill text-warning"></i>
+                Phnom Penh, Cambodia
+              </p>
+            </div>
+
+            <div>
+              <span class="badge bg-success">Available</span>
+            </div>
+          </div>
+
+          <h4 class="price">
+            $130 <small class="fs-6 text-secondary">/ Day</small>
+          </h4>
+
+          <hr />
+
+          <!-- Car Specifications -->
+          <h4 class="section-title">Car Specifications</h4>
+
+          <div class="row g-3">
+            <div class="col-6 col-md-3 feature">
+              <div class="spec-box text-center">
+                <i class="bi bi-people-fill"></i>
+                <h6 class="mt-2">Passengers</h6>
+                <p class="text-secondary mb-0">5 People</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 feature">
+              <div class="spec-box text-center">
+                <i class="bi bi-gear-fill"></i>
+                <h6 class="mt-2">Transmission</h6>
+                <p class="text-secondary mb-0">Automatic</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 feature">
+              <div class="spec-box text-center">
+                <i class="bi bi-fuel-pump-fill"></i>
+                <h6 class="mt-2">Fuel Type</h6>
+                <p class="text-secondary mb-0">Petrol</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 feature">
+              <div class="spec-box text-center">
+                <i class="bi bi-speedometer2"></i>
+                <h6 class="mt-2">Mileage</h6>
+                <p class="text-secondary mb-0">Unlimited*</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mt-5">
+            <h4 class="section-title">Car Description</h4>
+
+            <p class="text-secondary">
+              This is the Rolls-Royce Phantom VIII, the flagship luxury sedan of
+              the British marque. Known for its commanding presence, it features
+              Rolls-Royce's signature imposing Pantheon grille topped with the
+              iconic Spirit of Ecstasy mascot, sophisticated multi-spoke
+              polished wheels, and a timeless, hand-finished black exterior.
+              Renowned for its peerless craftsmanship and "magic carpet ride,"
+              the Phantom VIII represents the absolute pinnacle of automotive
+              luxury, comfort, and bespoke engineering.
+            </p>
+          </div>
+
+          <!-- Features -->
+          <div class="mt-4">
+            <h4 class="section-title">Features & Facilities</h4>
+
+            <div class="row">
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Air Conditioning
+              </div>
+
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Bluetooth
+              </div>
+
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                GPS Navigation
+              </div>
+
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Safety Airbags
+              </div>
+
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                USB Connection
+              </div>
+
+              <div class="col-6 mb-3">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Leather Seats
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Booking Form -->
+        <div class="col-lg-4">
+          <div class="booking-card">
+            <h4 class="mb-3">Book This Car</h4>
+
+            <div class="d-flex justify-content-between mb-3">
+              <span>Rental Price</span>
+              <strong>$130 / Day</strong>
+            </div>
+
+            <hr />
+
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Enter phone number"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Pick-up Date</label>
+                <input type="date" class="form-control" required />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Return Date</label>
+                <input type="date" class="form-control" required />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Pick-up Location</label>
+                <select class="form-select" required>
+                  <option value="">Choose location</option>
+                  <option>Phnom Penh</option>
+                  <option>Siem Reap</option>
+                  <option>Sihanoukville</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <h6 class="fw-bold justify-content-between d-flex">
+                  <span> Booking price :</span><span> $130</span>
+                </h6>
+                <h6 class="fw-bold justify-content-between d-flex">
+                  <span>Insurance:</span> <span>$20</span>
+                </h6>
+                <h6 class="fw-bold justify-content-between d-flex">
+                  <span>Total:</span> <span>$150</span>
+                </h6>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-book"
+                data-bs-toggle="modal"
+                data-bs-target="#successModal"
+              >
+                <i class="bi bi-calendar-check"></i>
+                Book Now
+              </button>
+            </form>
+
+            <p class="text-center text-secondary mt-3 small">
+              <i class="bi bi-shield-check text-success"></i>
+              Your information is protected.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <div class="mb-3">
+            <i
+              class="bi bi-check-circle-fill text-success"
+              style="font-size: 65px"
+            ></i>
+          </div>
+
+          <h3 class="fw-bold">Booking Successful!</h3>
+
+          <p class="text-secondary">
+            Thank you for choosing our car rental service. Your booking request
+            has been received successfully.
+          </p>
+
+          <button class="btn btn-success" data-bs-dismiss="modal">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-4">
+      <h5 class="text-warning">CAR RENT</h5>
+
+      <p class="mb-0">© 2026 Car Rent. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

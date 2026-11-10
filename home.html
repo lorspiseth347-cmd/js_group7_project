@@ -225,9 +225,8 @@
                     type="button"
                     class="btn btn-warning w-100 fw-bold ms-2"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    data-bs-target="#successModal"
                   >
-               
                     Booking
                   </button>
                 </div>
@@ -279,9 +278,8 @@
                     type="button"
                     class="btn btn-warning w-100 fw-bold ms-2"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    data-bs-target="#successModal"
                   >
-               
                     Booking
                   </button>
                 </div>
@@ -325,13 +323,12 @@
                     href="productDetail/card3detail.html"
                     >View
                   </a>
-                   <button
+                  <button
                     type="button"
                     class="btn btn-warning w-100 fw-bold ms-2"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    data-bs-target="#successModal"
                   >
-               
                     Booking
                   </button>
                 </div>
@@ -480,70 +477,26 @@
       crossorigin="anonymous"
     ></script>
 
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="bg-light">
-          <div class="modal-body p-4 p-sm-5 text-center position-relative">
-            <!-- Dismiss Close Button -->
-            <button
-              type="button"
-              class="btn-close position-absolute top-0 end-0 m-4"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-
-            <!-- Animated Success Badge -->
-            <div class="success-icon-wrapper mb-4">
-              <div class="pulse-ring"></div>
-              <div class="success-circle-bg">
-                <svg class="w-10 h-10" width="44" height="44">
-                  <circle class="checkmark-circle" />
-                  <path
-                    class="checkmark-check"
-                    fill="none"
-                    d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                    stroke="#10b981"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <!-- Status Tag -->
-            <span
-              class="badge bg-success-subtle text-success px-3 py-2 rounded-pill text-uppercase font-bold mb-2"
-            >
-              <i  class="fa-solid fa-circle-check me-1"></i> Booking Successful
-            </span>
-
-            <!-- Title -->
-            <h3
-              class="fw-extrabold text-dark tracking-tight mb-2"
-              id="bookingSuccessModalLabel"
-            >
-              Reservation Confirmed!
-            </h3>
-
-            <!-- Subtitle / Message -->
-            <p class="text-muted mb-4 small fs-6">
-              Your rental request for the
-              <strong>Rolls-Royce Phantom</strong> has been processed
-              successfully. Digital keys and receipt were sent to your email.
-            </p>
-              <button type="button" class="btn btn-outline-secondary  px-4 py-2.5 rounded-3  text-secondary " data-bs-dismiss="modal">
-              Close
-            </button>
-            
-            </div>
+    <div class="modal fade" id="successModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <div class="mb-3">
+            <i
+              class="bi bi-check-circle-fill text-success"
+              style="font-size: 65px"
+            ></i>
           </div>
+
+          <h3 class="fw-bold">Booking Successful!</h3>
+
+          <p class="text-secondary">
+            Thank you for choosing our car rental service. Your booking request
+            has been received successfully.
+          </p>
+
+          <button class="btn btn-success" data-bs-dismiss="modal">
+            Continue
+          </button>
         </div>
       </div>
     </div>
