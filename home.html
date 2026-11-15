@@ -112,18 +112,18 @@
             <a class="text-dark px-1" href="#">
               <i class="bi bi-person-fill-gear fs-4"></i>
             </a>
+            <button
+              type="button"
+              class="btn text-dark border-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#bookingCart"
+              aria-controls="bookingCart"
+            >
+              <i class="bi bi-bag-check-fill fs-4"></i>
+            </button>
           </form>
 
           <!-- Booking Cart Button -->
-          <button
-            type="button"
-            class="btn text-dark border-0"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#bookingCart"
-            aria-controls="bookingCart"
-          >
-            <i class="bi bi-bag-check-fill fs-4"></i>
-          </button>
         </div>
       </div>
     </nav>
@@ -167,12 +167,12 @@
               <!-- Pick-up and Return Date -->
               <div class="date-info">
                 <p>
-                  <i class="bi bi-calendar-check"></i>
+                 
                   <strong>Pick-up:</strong> 15 Nov 2026
                 </p>
 
                 <p>
-                  <i class="bi bi-calendar-return"></i>
+                 
                   <strong>Return:</strong> 18 Nov 2026
                 </p>
               </div>
@@ -309,17 +309,17 @@
       </div>
     </div>
 
-    <div class="container py-4">
+    <div class=" item reveal container py-4">
       <h1 class="fw-bold">Papular Rental Cars</h1>
       <p class="text-muted">Choose your favorite car.</p>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card card1" style="width: auto">
+          <div class="card card1 item reveal" style="width: auto">
             <img
               src="picture/Black Rolls-Royce Phantom Showroom Reflection.png"
-              class="card card1-img-top"
+              class="card card1 item reveal-img-top"
               alt="..."
             />
             <span
@@ -348,7 +348,7 @@
                 <div class="d-flex">
                   <a
                     class="btn btn-outline-secondary fw-bold w-100"
-                    href="productDetail/card1Detail.html"
+                    href="productDetail/card1 item revealDetail.html"
                     >View
                   </a>
 
@@ -367,7 +367,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card card1" style="width: auto">
+          <div class="card card1 item reveal" style="width: auto">
             <img
               src="picture/Rolls-Royce Dawn at Sunset.png"
               class="card-img-top"
@@ -419,7 +419,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mt-3">
-          <div class="card card1" style="width: auto">
+          <div class="card card1 item reveal" style="width: auto">
             <img
               src="picture/Gemini_Generated_Image_ijcbspijcbspijcb.jpg"
               class="card-img-top"
@@ -471,14 +471,14 @@
     </div>
 
     <div class="container py-5 text-center">
-      <h1 class="fw-bold">Why Choose CAR.Rent</h1>
-      <p class="text-muted">
+      <h1 class=" item reveal">Why Choose CAR.Rent</h1>
+      <p class=" item reveal text-muted">
         We make your journey easier and more comfortable.
       </p>
       <div class="row">
         <div class="col-12 col-md-4 col-lg-4">
           <div class="m-3">
-            <div class="card card1 bg-light shadow py-3">
+            <div class="card card1 item reveal bg-light shadow py-3">
               <div class="py-2">
                 <i class="bi bi-cash-coin fs-2 text-warning"></i>
               </div>
@@ -491,7 +491,7 @@
         </div>
         <div class="col-12 col-md-4 col-lg-4">
           <div class="m-3">
-            <div class="card card1 bg-light shadow py-3">
+            <div class="card card1 item reveal bg-light shadow py-3">
               <div class="py-2">
                 <i class="bi bi-shield-check fs-2 text-warning fw-bold"></i>
               </div>
@@ -504,7 +504,7 @@
         </div>
         <div class="col-12 col-md-4 col-lg-4">
           <div class="m-3">
-            <div class="card card1 bg-light shadow py-3">
+            <div class="card card1 item reveal bg-light shadow py-3">
               <div class="py-2">
                 <i class="bi bi-headset fs-2 text-warning"></i>
               </div>
@@ -798,4 +798,22 @@
       margin-top: none;
     }
   }
+
+  .reveal {
+        animation: appear linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(30);
+        }
+      }
 </style>

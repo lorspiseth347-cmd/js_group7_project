@@ -59,6 +59,59 @@
           top: -100px;
         }
       }
+
+       .typing {
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid orange;
+
+        animation:
+          typing 3s steps(4) forwards,
+          blink 0.5s infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 7.1ch;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+/* 
+       .item {
+    width: 300px;
+    padding: 50px;
+    margin: 100px auto;
+    background: orange;
+    border-radius: 15px;
+        } */
+
+/* Scroll animation */
+.reveal {
+    animation: appear linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(30);
+    }
+}
     </style>
   </head>
 
@@ -75,7 +128,7 @@
         <div class="row py-2">
           <!-- BMW Description -->
           <div class="col-12 col-md-6 col-lg-6">
-            <p class="fw-bold open text-warning">B M W</p>
+            <p class="typing fw-bold open text-warning">B M W</p>
 
             <p class="text-muted">
               BMW is a luxury car brand known for its elegant design, powerful
@@ -146,7 +199,7 @@
         <div class="row">
           <!-- BMW Card -->
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw2.jpg"
                 class="card-img-top img-fluid"
@@ -209,7 +262,7 @@
           </div>
 
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw4.jpg"
                 class="card-img-top img-fluid"
@@ -272,7 +325,7 @@
           </div>
 
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw5.jpg"
                 class="card-img-top img-fluid"
@@ -334,7 +387,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw6.jpg"
                 class="card-img-top img-fluid"
@@ -396,7 +449,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw7.jpg"
                 class="card-img-top img-fluid"
@@ -458,7 +511,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 src="../picture/bmw9.jpg"
                 class="card-img-top img-fluid"

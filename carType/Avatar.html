@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BMW Car Rental</title>
+    <title>Avatr Car Rental</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -62,7 +62,7 @@
         }
       }
 
-      .typing {
+      /* .typing {
         width: 0;
         white-space: nowrap;
         overflow: hidden;
@@ -86,21 +86,61 @@
         10% {
           border-color: transparent;
         }
+      } */
+
+      .typing {
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid orange;
+
+        animation:
+          typing 3s steps(5) forwards,
+          blink 0.5s infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 8ch;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .reveal {
+        animation: appear linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(30);
+        }
       }
     </style>
   </head>
 
   <body>
     <div class="container-fluid bg-light">
-      <div class="container py-2">
-        <a href="../home.html" class="btn btn-secondary text-decoration-none"
-          >Back</a
-        >
-      </div>
+     <a href="../home.html" class="btn btn-secondary">Back</a>
       <div class="container">
         <div class="row py-2">
           <div class="col-12 col-md-6 col-lg-6">
-            <p class="typing fw-bold open text-warning">AVATR</p>
+            <p class="typing fw-bold open text-warning">A V A T R</p>
 
             <p class="text-muted">
               The Avatr is a modern electric car with a stylish and futuristic
@@ -167,7 +207,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar2.jpg"
@@ -230,7 +270,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar3.jpg"
@@ -293,7 +333,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar4.jpg"
@@ -356,7 +396,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar5.jpg"
@@ -419,7 +459,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar6.jpg"
@@ -482,7 +522,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar8.jpg"
@@ -545,7 +585,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar.webp"
@@ -608,7 +648,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-3 py-3">
-            <div class="card card1 position-relative">
+            <div class="card card1 item reveal position-relative">
               <img
                 style="min-height: 170px"
                 src="../picture/avatar.jpg"
