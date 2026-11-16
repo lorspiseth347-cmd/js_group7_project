@@ -41,7 +41,7 @@
         .price {
           top: -100px;
         }
-        .Information{
+        .Information {
           font-size: 15px;
         }
       }
@@ -134,12 +134,48 @@
           transform: translateY(30);
         }
       }
+
+      /* Footer Links */
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ffc107;
+        padding-left: 6px;
+      }
+
+      /* Bottom Links */
+      .bottom-link {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.3s;
+      }
+
+      .bottom-link:hover {
+        color: #ffc107;
+      }
     </style>
   </head>
 
   <body>
     <div class="container-fluid bg-light">
-     <a href="../home.html" class="btn btn-secondary">Back</a>
+      <a href="../home.html" class="btn btn-secondary">Back</a>
       <div class="container">
         <div class="row py-2">
           <div class="col-12 col-md-6 col-lg-6">
@@ -717,82 +753,101 @@
       </div>
     </main>
 
-    <footer class="container-fluid" style="background-color: rgb(8, 8, 54)">
-      <div class="px-3 py-1">
-        <div>
-          <div class="row">
-            <div class="col-6 col-md-6 col-lg-4">
-              <a class="navbar-brand fw-bold" href="home.html"
-                ><span class="text-warning py-1 fs-1">CAR.</span> Rent</a
-              >
-              <p class="text-white">
-                Your trusted partner for comfortable, affordable and reliable
-                car rentals.
-              </p>
+    <footer
+      class="container-fluid text-white pt-5 pb-3"
+      style="background-color: #080836"
+    >
+      <div class="container">
+        <div class="row g-4">
+          <!-- Brand Information -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <a
+              class="navbar-brand fw-bold text-white fs-3 text-decoration-none"
+              href="home.html"
+            >
+              <span class="text-warning">CAR.</span> Rent
+            </a>
+
+            <p class="text-white-50 mt-3 pe-lg-5">
+              Your trusted partner for comfortable, affordable, and reliable car
+              rentals. Drive your journey with confidence and enjoy every mile.
+            </p>
+
+            <div class="d-flex gap-3 mt-4">
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="bi bi-telegram"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-tiktok"></i></a>
             </div>
-            <div class=" col-6 col-md-6 col-lg-2">
-              <div class="py-2">
-                <ul style="list-style-type: none">
-                  <h4 class="fw-bold text-white">Quick Links</h4>
-                  <li class="mt-2">
-                    <a
-                      class="text-white fs-6 text-decoration-none"
-                      href="home.html"
-                      >Home</a
-                    >
-                  </li>
-                  <li class="mt-2">
-                    <a
-                      class="text-white fs-6 text-decoration-none"
-                      href="sopattra.html"
-                      >About</a
-                    >
-                  </li>
-                  <li class="mt-2">
-                    <a
-                      class="text-white fs-6 text-decoration-none"
-                      href="peakdey.html"
-                      >Service</a
-                    >
-                  </li>
-                  <li class="mt-2">
-                    <a
-                      class="text-white fs-6 text-decoration-none"
-                      href="mengly.html"
-                      >Contact</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-7 col-md-6 col-lg-3">
-              <div class="navbar-brand text-white">
-                <ul style="list-style-type: none">
-                  <h4 class="fw-bold">Contact Us</h4>
-                  <li class="Information mt-3">
-                    <i class="bi bi-telephone-fill"></i> +855 889 220 960
-                  </li>
-                  <li class="Information mt-3">
-                    <i class="bi bi-envelope"></i> admin3322@gmail.com
-                  </li>
-                  <li class="Information mt-3">
-                    <i class="bi bi-geo-alt"></i> Phnom Penh, Cambodia
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-5 col-md-6 col-lg-2">
-              <div class=" text-white">
-                <ul style="list-style-type: none">
-                  <h4 class="fw-bold">Follow Us</h4>
-                  <li class="mt-2"><i class="bi bi-facebook"></i> Facebook</li>
-                  <li class="mt-2">
-                    <i class="bi bi-instagram"></i> Instagram
-                  </li>
-                  <li class="mt-2"><i class="bi bi-telegram"></i> Telegram</li>
-                </ul>
-              </div>
-            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-6 col-md-6 col-lg-2">
+            <h5 class="fw-bold mb-4">Quick Links</h5>
+
+            <ul class="footer-links">
+              <li><a href="home.html">Home</a></li>
+              <li><a href="sopattra.html">About Us</a></li>
+              <li><a href="peakdey.html">Services</a></li>
+              <li><a href="mengly.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Our Services -->
+          <div class="col-6 col-md-6 col-lg-2">
+            <h5 class="fw-bold mb-4">Our Services</h5>
+
+            <ul class="footer-links">
+              <li><a href="#">Self-Drive Rental</a></li>
+              <li><a href="#">Car with Driver</a></li>
+              <li><a href="#">Airport Pickup</a></li>
+              <li><a href="#">Tour &amp; Travel Packages</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <h5 class="fw-bold mb-4">Contact Us</h5>
+
+            <ul class="footer-links">
+              <li>
+                <i class="bi bi-telephone-fill text-warning me-2"></i>
+                +855 889 220 960
+              </li>
+
+              <li>
+                <i class="bi bi-envelope-fill text-warning me-2"></i>
+                admin3322@gmail.com
+              </li>
+
+              <li>
+                <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+                Phnom Penh, Cambodia
+              </li>
+
+              <li>
+                <i class="bi bi-clock-fill text-warning me-2"></i>
+                Monday - Sunday: 8:00 AM - 8:00 PM
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <hr class="border-secondary mt-5" />
+
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center gap-2"
+        >
+          <p class="text-white-50 mb-0">
+            © 2026 CAR. Rent. All Rights Reserved.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a href="#" class="bottom-link">Privacy Policy</a>
+            <a href="#" class="bottom-link">Terms & Conditions</a>
           </div>
         </div>
       </div>
