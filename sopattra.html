@@ -16,155 +16,6 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <style>
-      /* cart store */
-      /* Booking Cart */
-      .booking-cart {
-        width: 550px !important;
-        max-width: 100%;
-        border: none;
-      }
-
-      /* Booking Item */
-      .booking-item {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        padding: 15px;
-        border: 1px solid #e5e5e5;
-        border-radius: 10px;
-        margin-bottom: 18px;
-        transition: 0.3s;
-      }
-
-      .booking-item:hover {
-        border-color: #ffc107;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-      }
-
-      /* Car Image */
-      .booking-item img {
-        width: 180px;
-        height: 105px;
-        object-fit: cover;
-        border-radius: 6px;
-      }
-
-      /* Car Information */
-      .car-info {
-        flex: 1;
-      }
-
-      .car-info h5 {
-        font-size: 19px;
-        margin-bottom: 25px;
-        color: #252525;
-      }
-
-      /* Booking Status */
-      .booking-status {
-        font-size: 17px;
-        font-weight: 700;
-        color: #252525;
-      }
-
-      .booking-status i {
-        color: #198754;
-        font-size: 21px;
-        margin-right: 4px;
-      }
-
-      /* Delete Button */
-      .delete-btn {
-        width: 40px;
-        height: 40px;
-        border: 1px solid #ddd;
-        background: white;
-        border-radius: 7px;
-        font-size: 20px;
-        color: #555;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .delete-btn:hover {
-        background: #dc3545;
-        color: white;
-        border-color: #dc3545;
-      }
-
-      /* Empty Cart */
-      .empty-cart {
-        text-align: center;
-        padding: 80px 15px;
-      }
-
-      .empty-cart i {
-        font-size: 65px;
-        color: #ccc;
-      }
-
-      .empty-cart h5 {
-        margin-top: 15px;
-        font-weight: bold;
-      }
-
-      /* Responsive */
-      @media (max-width: 576px) {
-        .booking-cart {
-          width: 100% !important;
-        }
-
-        .booking-item {
-          gap: 10px;
-          padding: 10px;
-        }
-
-        .booking-item img {
-          width: 110px;
-          height: 85px;
-        }
-
-        .car-info h5 {
-          font-size: 15px;
-          margin-bottom: 15px;
-        }
-
-        .booking-status {
-          font-size: 14px;
-        }
-
-        .delete-btn {
-          width: 35px;
-          height: 35px;
-          font-size: 17px;
-        }
-      }
-      .car-info {
-        flex: 1;
-      }
-
-      .car-info h5 {
-        font-size: 19px;
-        margin-bottom: 12px;
-        color: #252525;
-      }
-
-      .date-info p {
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 7px;
-      }
-
-      .date-info i {
-        color: #198754;
-        margin-right: 5px;
-        font-size: 16px;
-      }
-
-      .date-info strong {
-        color: #222;
-      }
-
       /* Same card behavior as home.html */
       .card:hover {
         transform: translateY(-8px);
@@ -209,6 +60,17 @@
         justify-content: center;
       }
 
+      /* Team photo: round, cropped to fit, yellow ring like the site theme */
+      .team-photo {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 50%;
+        border: 4px solid #ffc107;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -220,42 +82,6 @@
           transform: none;
         }
       }
-
-      /* Footer Links */
-      .footer-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footer-links li {
-        margin-bottom: 15px;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 15px;
-      }
-
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: 0.3s ease;
-      }
-
-      .footer-links a:hover {
-        color: #ffc107;
-        padding-left: 6px;
-      }
-
-      /* Bottom Links */
-      .bottom-link {
-        color: rgba(255, 255, 255, 0.6);
-        text-decoration: none;
-        font-size: 13px;
-        transition: 0.3s;
-      }
-
-      .bottom-link:hover {
-        color: #ffc107;
-      }
     </style>
   </head>
   <body>
@@ -266,7 +92,7 @@
     >
       <div class="container-fluid py-1">
         <a class="navbar-brand fw-bold" href="home.html"
-          ><span class="text-warning py-1 fs-2">CAR.</span> Rent</a
+          ><span class="text-warning py-1 fs-2">CAR.</span> Shop</a
         >
         <button
           class="navbar-toggler"
@@ -310,17 +136,13 @@
                 Car Type
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="carType/Avatar.html">Avatar</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="carType/BMW.html">BMW</a>
-                </li>
+                <li><a class="dropdown-item" href="#">Avatar</a></li>
+                <li><a class="dropdown-item" href="#">BMW</a></li>
                 <li><a class="dropdown-item" href="#">Lambogini</a></li>
               </ul>
             </li>
           </ul>
-          <form class="d-flex align-items-center">
+          <form class="d-flex">
             <input
               class="form-control me-2"
               type="search"
@@ -330,84 +152,10 @@
             <a class="text-dark px-1" href="#">
               <i class="bi bi-person-fill-gear fs-4"></i
             ></a>
-            <button
-              type="button"
-              class="btn text-dark border-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#bookingCart"
-              aria-controls="bookingCart"
-            >
-              <i class="bi bi-bag-check-fill fs-4"></i>
-            </button>
+            <a class="text-dark px-2" href="#"
+              ><i class="bi bi-bag-check-fill fs-4"></i
+            ></a>
           </form>
-
-          <!-- cart store -->
-          <div
-            class="offcanvas offcanvas-end booking-cart"
-            tabindex="-1"
-            id="bookingCart"
-            aria-labelledby="bookingCartLabel"
-          >
-            <!-- Header -->
-            <div class="offcanvas-header border-bottom px-4 py-4">
-              <div>
-                <h4 class="fw-bold mb-1" id="bookingCartLabel">My Bookings</h4>
-
-                <p class="text-secondary mb-0">
-                  See what you have already booked
-                </p>
-              </div>
-
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-
-            <!-- Cart Body -->
-            <div class="offcanvas-body p-4">
-              <div id="cartItems">
-                <!-- Car Item 1 -->
-                <div class="booking-item">
-                  <!-- Car Image -->
-                  <img src="picture/bmw6.jpg" alt="BMW X7" />
-
-                  <!-- Car Information -->
-                  <div class="car-info">
-                    <h5 class="fw-bold">BMW X7</h5>
-
-                    <!-- Pick-up and Return Date -->
-                    <div class="date-info">
-                      <p><strong>Pick-up:</strong> 15 Nov 2026</p>
-
-                      <p><strong>Return:</strong> 18 Nov 2026</p>
-                    </div>
-                  </div>
-
-                  <!-- Delete Button -->
-                  <button
-                    type="button"
-                    class="delete-btn"
-                    onclick="removeBooking(this)"
-                    aria-label="Remove booking"
-                  >
-                    <i class="bi bi-trash3"></i>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Empty Cart -->
-              <div id="emptyCart" class="empty-cart d-none">
-                <i class="bi bi-car-front"></i>
-
-                <h5>No bookings yet!</h5>
-
-                <p class="text-secondary">Your booked cars will appear here.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </nav>
@@ -435,7 +183,9 @@
                   class="btn btn-warning px-3 text-dark fw-bold py-2"
                   >Book Now</a
                 >
-                <a href="#team" class="btn btn-secondary ms-3 px-3 py-2 fw-bold"
+                <a
+                  href="#team"
+                  class="btn btn-secondary ms-3 px-3 py-2 fw-bold"
                   >Meet the team</a
                 >
               </div>
@@ -523,8 +273,8 @@
               <h1 class="fw-bold mt-3">A Team That Loves Cars and Customers</h1>
               <p class="text-muted">
                 We started CAR.Rent because renting a car should be simple. Our
-                team handles everything from choosing the right car to the final
-                return, so you can focus on your trip.
+                team handles everything from choosing the right car to the
+                final return, so you can focus on your trip.
               </p>
               <ul class="list-unstyled">
                 <li class="mt-2">
@@ -574,10 +324,7 @@
         <div class="col-12 col-md-6">
           <div class="card shadow h-100 mt-3">
             <div class="card-body p-4">
-              <div
-                class="icon-circle mb-3"
-                style="background-color: rgb(8, 8, 54)"
-              >
+              <div class="icon-circle mb-3" style="background-color: rgb(8, 8, 54)">
                 <i class="bi bi-eye-fill fs-2 text-warning"></i>
               </div>
               <h3 class="fw-bold">Our Vision</h3>
@@ -701,12 +448,12 @@
       <p class="text-muted">The people who keep you on the road.</p>
       <div class="row mt-3">
         <div class="col-12 col-md-6 col-lg-3 mt-3">
-          <div class="card shadow py-4 h-100">
+          <div class="card shadow h-100 overflow-hidden team-card">
             <div>
-              <span class="team-avatar"><i class="bi bi-person-fill"></i></span>
+              <img src="picture/sophattra.jpg" alt="Sophattra" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
             </div>
             <div class="card-body">
-              <h5 class="fw-bold mb-1">Sopattra</h5>
+              <h5 class="fw-bold mb-1">Oeung Sophattra</h5>
               <p class="text-warning fw-bold mb-2">Founder &amp; Manager</p>
               <p class="text-muted" style="font-size: 14px">
                 Leads the company and makes sure every customer is happy.
@@ -717,7 +464,7 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <span class="team-avatar"><i class="bi bi-person-fill"></i></span>
+              <img src="picture/pheakdey.PNG" alt="Leng Suopheakdey" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Pheakdey</h5>
@@ -731,7 +478,7 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <span class="team-avatar"><i class="bi bi-person-fill"></i></span>
+              <img src="picture/mengly.jpg" alt="Mengly" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Mengly</h5>
@@ -745,10 +492,10 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <span class="team-avatar"><i class="bi bi-person-fill"></i></span>
+              <img src="picture/piseth.png" alt="Piseth" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
             </div>
             <div class="card-body">
-              <h5 class="fw-bold mb-1">Piseth</h5>
+              <h5 class="fw-bold mb-1">Lors Piseth</h5>
               <p class="text-warning fw-bold mb-2">Booking Coordinator</p>
               <p class="text-muted" style="font-size: 14px">
                 Arranges pick-up and return so your trip starts smoothly.
@@ -775,9 +522,7 @@
           prices.
         </p>
         <div class="mt-4">
-          <a
-            href="home.html"
-            class="btn btn-warning px-4 text-dark fw-bold py-2"
+          <a href="home.html" class="btn btn-warning px-4 text-dark fw-bold py-2"
             >Book Now</a
           >
           <a href="mengly.html" class="btn btn-secondary ms-3 px-4 py-2 fw-bold"
@@ -787,102 +532,83 @@
       </div>
     </section>
 
-   
-   <footer
-      class="container-fluid text-white pt-5 pb-3"
-      style="background-color: #080836"
-    >
-      <div class="container">
-        <div class="row g-4">
-          <!-- Brand Information -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <a
-              class="navbar-brand fw-bold text-white fs-3 text-decoration-none"
-              href="home.html"
-            >
-              <span class="text-warning">CAR.</span> Rent
-            </a>
-
-            <p class="text-white-50 mt-3 pe-lg-5">
-              Your trusted partner for comfortable, affordable, and reliable car
-              rentals. Drive your journey with confidence and enjoy every mile.
-            </p>
-
-            <div class="d-flex gap-3 mt-4">
-              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="social-icon"
-                ><i class="bi bi-instagram"></i
-              ></a>
-              <a href="#" class="social-icon"><i class="bi bi-telegram"></i></a>
-              <a href="#" class="social-icon"><i class="bi bi-tiktok"></i></a>
+    <!-- ================= FOOTER (same as home.html) ================= -->
+    <footer class="container-fluid" style="background-color: rgb(8, 8, 54)">
+      <div class="px-3 py-4">
+        <div>
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+              <a class="navbar-brand fw-bold" href="home.html"
+                ><span class="text-warning py-1 fs-1">CAR.</span> Shop</a
+              >
+              <p class="text-white">
+                Your trusted partner for comfortable, affordable and reliable
+                car rentals.
+              </p>
             </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div class="col-6 col-md-6 col-lg-2">
-            <h5 class="fw-bold mb-4">Quick Links</h5>
-
-            <ul class="footer-links">
-              <li><a href="home.html">Home</a></li>
-              <li><a href="sopattra.html">About Us</a></li>
-              <li><a href="peakdey.html">Services</a></li>
-              <li><a href="mengly.html">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Our Services -->
-          <div class="col-6 col-md-6 col-lg-2">
-            <h5 class="fw-bold mb-4">Our Services</h5>
-
-            <ul class="footer-links">
-              <li><a href="#">Self-Drive Rental</a></li>
-              <li><a href="#">Car with Driver</a></li>
-              <li><a href="#">Airport Pickup</a></li>
-              <li><a href="#">Tour &amp; Travel Packages</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Information -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <h5 class="fw-bold mb-4">Contact Us</h5>
-
-            <ul class="footer-links">
-              <li>
-                <i class="bi bi-telephone-fill text-warning me-2"></i>
-                +855 889 220 960
-              </li>
-
-              <li>
-                <i class="bi bi-envelope-fill text-warning me-2"></i>
-                admin3322@gmail.com
-              </li>
-
-              <li>
-                <i class="bi bi-geo-alt-fill text-warning me-2"></i>
-                Phnom Penh, Cambodia
-              </li>
-
-              <li>
-                <i class="bi bi-clock-fill text-warning me-2"></i>
-                Monday - Sunday: 8:00 AM - 8:00 PM
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <hr class="border-secondary mt-5" />
-
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center gap-2"
-        >
-          <p class="text-white-50 mb-0">
-            © 2026 CAR. Rent. All Rights Reserved.
-          </p>
-
-          <div class="d-flex gap-3">
-            <a href="#" class="bottom-link">Privacy Policy</a>
-            <a href="#" class="bottom-link">Terms & Conditions</a>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class="py-2">
+                <ul style="list-style-type: none">
+                  <h4 class="fw-bold text-white">Quick Links</h4>
+                  <li class="mt-2">
+                    <a
+                      class="text-white fs-6 text-decoration-none"
+                      href="home.html"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="mt-2">
+                    <a
+                      class="text-white fs-6 text-decoration-none"
+                      href="sopattra.html"
+                      >About</a
+                    >
+                  </li>
+                  <li class="mt-2">
+                    <a
+                      class="text-white fs-6 text-decoration-none"
+                      href="peakdey.html"
+                      >Service</a
+                    >
+                  </li>
+                  <li class="mt-2">
+                    <a
+                      class="text-white fs-6 text-decoration-none"
+                      href="mengly.html"
+                      >Contact</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="m-2 text-white">
+                <ul style="list-style-type: none">
+                  <h4 class="fw-bold">Contact Us</h4>
+                  <li class="mt-3">
+                    <i class="bi bi-telephone-fill"></i> +855 889 220 960
+                  </li>
+                  <li class="mt-3">
+                    <i class="bi bi-envelope"></i> admin3322@gmail.com
+                  </li>
+                  <li class="mt-3">
+                    <i class="bi bi-geo-alt"></i> Phnom Penh, Cambodia
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+              <div class="py-2 text-white">
+                <ul style="list-style-type: none">
+                  <h4 class="fw-bold">Follow Us</h4>
+                  <li class="mt-2"><i class="bi bi-facebook"></i> Facebook</li>
+                  <li class="mt-2">
+                    <i class="bi bi-instagram"></i> Instagram
+                  </li>
+                  <li class="mt-2"><i class="bi bi-telegram"></i> Telegram</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
