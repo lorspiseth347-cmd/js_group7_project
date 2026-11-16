@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAR. Rent Dashboard</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fa;
+        color: #222;
+      }
+
+      /* Hidden radios / checkbox that drive the pages (no JavaScript) */
+      .sr {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+        height: 0;
+      }
+
+      .dashboard-wrapper {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: #080836;
+        color: white;
+        padding: 25px 18px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .brand {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 25px;
+      }
+      .brand span {
+        color: #ffc107;
+      }
+      .menu-title {
+        color: #8585a5;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin: 12px 3px;
+      }
+      .nav-menu {
+        list-style: none;
+        padding: 0;
+      }
+      .nav-menu li {
+        margin-bottom: 8px;
+      }
+      .nav-menu label {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #c1c1d4;
+        transition: 0.3s;
+        width: 100%;
+      }
+      .nav-menu label i {
+        font-size: 20px;
+      }
+      .nav-menu label:hover {
+        background: #ffc107;
+        color: #080836;
+      }
+
+      /* Active menu item */
+      #r-dashboard:checked
+        ~ .dashboard-wrapper
+        label[for="r-dashboard"].nav-item,
+      #r-cars:checked ~ .dashboard-wrapper label[for="r-cars"].nav-item,
+      #r-bookings:checked ~ .dashboard-wrapper label[for="r-bookings"].nav-item,
+      #r-customers:checked
+        ~ .dashboard-wrapper
+        label[for="r-customers"].nav-item,
+      #r-payments:checked ~ .dashboard-wrapper label[for="r-payments"].nav-item,
+      #r-settings:checked ~ .dashboard-wrapper label[for="r-settings"].nav-item,
+      #r-help:checked ~ .dashboard-wrapper label[for="r-help"].nav-item {
+        background: #ffc107;
+        color: #080836;
+      }
+
+      /* Pages */
+      .page {
+        display: none;
+      }
+      #r-dashboard:checked ~ .dashboard-wrapper #page-dashboard,
+      #r-cars:checked ~ .dashboard-wrapper #page-cars,
+      #r-bookings:checked ~ .dashboard-wrapper #page-bookings,
+      #r-customers:checked ~ .dashboard-wrapper #page-customers,
+      #r-payments:checked ~ .dashboard-wrapper #page-payments,
+      #r-settings:checked ~ .dashboard-wrapper #page-settings,
+      #r-help:checked ~ .dashboard-wrapper #page-help {
+        display: block;
+        animation: fadeIn 0.25s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* Top bar title per page */
+      .t {
+        display: none;
+      }
+      #r-dashboard:checked ~ .dashboard-wrapper .t-dashboard,
+      #r-cars:checked ~ .dashboard-wrapper .t-cars,
+      #r-bookings:checked ~ .dashboard-wrapper .t-bookings,
+      #r-customers:checked ~ .dashboard-wrapper .t-customers,
+      #r-payments:checked ~ .dashboard-wrapper .t-payments,
+      #r-settings:checked ~ .dashboard-wrapper .t-settings,
+      #r-help:checked ~ .dashboard-wrapper .t-help {
+        display: inline;
+      }
+
+      /* Main */
+      .main-content {
+        flex: 1;
+        min-width: 0;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      .topbar {
+        height: 85px;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 35px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid #eee;
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+      .sidebar-overlay {
+        display: none;
+      }
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+      .notification {
+        position: relative;
+        border: none;
+        background: none;
+        font-size: 21px;
+      }
+      .notification span {
+        position: absolute;
+        top: 2px;
+        right: 1px;
+        width: 8px;
+        height: 8px;
+        background: red;
+        border-radius: 50%;
+      }
+      .admin-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .admin-profile img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+      }
+      .admin-profile h6 {
+        margin: 0;
+        font-size: 14px;
+      }
+      .admin-profile small {
+        color: #888;
+      }
+
+      .dashboard-body {
+        padding: 30px 35px;
+      }
+
+      .page-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        gap: 12px;
+      }
+      .page-heading h3 {
+        font-weight: bold;
+      }
+      .page-heading p,
+      .section-heading p {
+        color: #888;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .add-btn,
+      .manage-btn {
+        background: #ffc107;
+        border: none;
+        padding: 11px 18px;
+        border-radius: 7px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .add-btn:hover,
+      .manage-btn:hover {
+        background: #e6ad00;
+        transform: translateY(-2px);
+      }
+
+      /* Stats */
+      .stat-card {
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+      }
+      .stat-icon {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        font-size: 21px;
+        margin-bottom: 15px;
+      }
+      .blue {
+        background: #e6f0ff;
+        color: #2878e5;
+      }
+      .green {
+        background: #e2f8ed;
+        color: #16a05d;
+      }
+      .orange {
+        background: #fff0df;
+        color: #ed922d;
+      }
+      .purple {
+        background: #f0e8ff;
+        color: #8654d8;
+      }
+      .stat-card p {
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .stat-card h3 {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .stat-card small {
+        color: #999;
+        font-size: 12px;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .section-heading h5 {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      .section-heading label {
+        color: #080836;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      /* Cars */
+      .car-card {
+        background: white;
+        border-radius: 13px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+        transition: 0.3s;
+      }
+      .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09);
+      }
+      .car-image {
+        height: 210px;
+        position: relative;
+        overflow: hidden;
+      }
+      .car-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .available,
+      .rented {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1;
+        padding: 7px 13px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .available {
+        background: #d7f8e4;
+        color: #168c4a;
+      }
+      .rented {
+        background: #fff0d6;
+        color: #d68b00;
+      }
+      .car-info {
+        padding: 20px;
+      }
+      .car-info h5 {
+        font-weight: bold;
+      }
+      .car-info p {
+        color: #888;
+        font-size: 13px;
+      }
+      .more-btn {
+        background: #f5f5f5;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 7px;
+      }
+      .car-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .car-details span {
+        font-size: 12px;
+        color: #777;
+      }
+      .car-details i {
+        color: #080836;
+        margin-right: 4px;
+      }
+      .price {
+        color: #080836;
+        margin: 0;
+      }
+      .price small {
+        color: #888;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      /* Tables */
+      .booking-section {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+        margin-bottom: 24px;
+      }
+      .table thead th {
+        background: #f7f8fc;
+        color: #777;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 15px;
+        white-space: nowrap;
+      }
+      .table tbody td {
+        padding: 15px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .customer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+      }
+      .customer img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+      .status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: bold;
+      }
+      .confirmed {
+        background: #e0f8e9;
+        color: #168c4a;
+      }
+      .pending {
+        background: #fff2d8;
+        color: #d68b00;
+      }
+      .completed {
+        background: #e6edff;
+        color: #3767cf;
+      }
+      .cancelled {
+        background: #ffe4e4;
+        color: #d63b3b;
+      }
+
+      /* Booking filters (radio-driven) */
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .filter-bar label {
+        border: 1px solid #e3e5ee;
+        background: white;
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #666;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .filter-bar label:hover {
+        background: #080836;
+        color: white;
+        border-color: #080836;
+      }
+      #f-all:checked ~ .filter-bar label[for="f-all"],
+      #f-confirmed:checked ~ .filter-bar label[for="f-confirmed"],
+      #f-pending:checked ~ .filter-bar label[for="f-pending"],
+      #f-completed:checked ~ .filter-bar label[for="f-completed"],
+      #f-cancelled:checked ~ .filter-bar label[for="f-cancelled"] {
+        background: #080836;
+        color: white;
+        border-color: #080836;
+      }
+      #f-confirmed:checked
+        ~ .table-responsive
+        tr[data-status]:not([data-status="confirmed"]),
+      #f-pending:checked
+        ~ .table-responsive
+        tr[data-status]:not([data-status="pending"]),
+      #f-completed:checked
+        ~ .table-responsive
+        tr[data-status]:not([data-status="completed"]),
+      #f-cancelled:checked
+        ~ .table-responsive
+        tr[data-status]:not([data-status="cancelled"]) {
+        display: none;
+      }
+
+      /* Settings */
+      .form-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #555;
+      }
+      .form-control,
+      .form-select {
+        font-size: 14px;
+        padding: 10px 12px;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #ffc107;
+        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+      }
+
+      /* FAQ (native <details>, no JS) */
+      .faq details {
+        border-bottom: 1px solid #eee;
+      }
+      .faq summary {
+        padding: 16px 4px;
+        font-weight: 600;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq summary::after {
+        content: "\F282";
+        font-family: "bootstrap-icons";
+        font-size: 13px;
+        transition: 0.2s;
+      }
+      .faq details[open] summary {
+        color: #080836;
+      }
+      .faq details[open] summary::after {
+        transform: rotate(180deg);
+      }
+      .faq details p {
+        padding: 0 4px 16px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 991px) {
+        .sidebar {
+          position: fixed;
+          left: -260px;
+          top: 0;
+          bottom: 0;
+          height: 100vh;
+          z-index: 1000;
+          transition: 0.3s;
+          overflow-y: auto;
+        }
+        #sidebar-toggle:checked ~ .dashboard-wrapper .sidebar {
+          left: 0;
+        }
+        #sidebar-toggle:checked ~ .dashboard-wrapper .sidebar-overlay {
+          display: block;
+          position: fixed;
+          inset: 0;
+          z-index: 999;
+          background: rgba(0, 0, 0, 0.4);
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .dashboard-body {
+          padding: 25px 20px;
+        }
+        .topbar {
+          padding: 0 20px;
+        }
+      }
+      @media (max-width: 576px) {
+        .dashboard-body {
+          padding: 20px 12px;
+        }
+        .topbar {
+          height: 75px;
+          padding: 0 12px;
+        }
+        .admin-profile small {
+          display: none;
+        }
+        .admin-profile img {
+          width: 35px;
+          height: 35px;
+        }
+        .top-actions {
+          gap: 12px;
+        }
+        .page-heading {
+          align-items: flex-start;
+        }
+        .page-heading h3 {
+          font-size: 21px;
+        }
+        .page-heading p {
+          font-size: 12px;
+        }
+        .add-btn {
+          font-size: 11px;
+          padding: 10px;
+          white-space: nowrap;
+        }
+        .section-heading h5 {
+          font-size: 16px;
+        }
+        .booking-section {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- State holders: must come before .dashboard-wrapper -->
+    <input
+      type="checkbox"
+      id="sidebar-toggle"
+      class="sr"
+      aria-label="Toggle sidebar"
+    />
+    <input type="radio" name="page" id="r-dashboard" class="sr" checked />
+    <input type="radio" name="page" id="r-cars" class="sr" />
+    <input type="radio" name="page" id="r-bookings" class="sr" />
+    <input type="radio" name="page" id="r-customers" class="sr" />
+    <input type="radio" name="page" id="r-payments" class="sr" />
+    <input type="radio" name="page" id="r-settings" class="sr" />
+    <input type="radio" name="page" id="r-help" class="sr" />
+
+    <div class="dashboard-wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="brand"><span>CAR.</span> Rent</div>
+
+        <div class="menu-title">MENU</div>
+        <ul class="nav-menu">
+          <li>
+            <label class="nav-item" for="r-dashboard"
+              ><i class="bi bi-grid"></i><span>Dashboard</span></label
+            >
+          </li>
+          <li>
+            <label class="nav-item" for="r-cars"
+              ><i class="bi bi-car-front"></i><span>My Cars</span></label
+            >
+          </li>
+          <li>
+            <label class="nav-item" for="r-bookings"
+              ><i class="bi bi-calendar-check"></i><span>Bookings</span></label
+            >
+          </li>
+          <li>
+            <label class="nav-item" for="r-customers"
+              ><i class="bi bi-people"></i><span>Customers</span></label
+            >
+          </li>
+          <li>
+            <label class="nav-item" for="r-payments"
+              ><i class="bi bi-wallet2"></i><span>Payments</span></label
+            >
+          </li>
+        </ul>
+
+        <div class="menu-title mt-4">GENERAL</div>
+        <ul class="nav-menu">
+          <li>
+            <label class="nav-item" for="r-settings"
+              ><i class="bi bi-gear"></i><span>Settings</span></label
+            >
+          </li>
+          <li>
+            <label class="nav-item" for="r-help"
+              ><i class="bi bi-question-circle"></i
+              ><span>Help Center</span></label
+            >
+          </li>
+        </ul>
+
+        <a href="index.html">
+          <div
+            class="btn btn-outline-danger position-absolute bottom-0"
+            style="width: 200px; margin-bottom: 20px"
+          >
+            <i class="bi text-danger me-3 bi-box-arrow-right"></i>
+            <span class="text-danger">Logout</span>
+          </div>
+        </a>
+      </aside>
+
+      <!-- Tap outside to close sidebar on mobile -->
+      <label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <nav class="topbar">
+          <div class="d-flex align-items-center gap-3">
+            <label class="menu-toggle" for="sidebar-toggle"
+              ><i class="bi bi-list"></i
+            ></label>
+            <div>
+              <h5 class="mb-0 fw-bold">
+                <span class="t t-dashboard">Dashboard</span>
+                <span class="t t-cars">My Cars</span>
+                <span class="t t-bookings">Bookings</span>
+                <span class="t t-customers">Customers</span>
+                <span class="t t-payments">Payments</span>
+                <span class="t t-settings">Settings</span>
+                <span class="t t-help">Help Center</span>
+              </h5>
+              <small class="text-secondary">Welcome back, Admin!</small>
+            </div>
+          </div>
+
+          <div class="top-actions">
+            <button class="notification">
+              <i class="bi bi-bell"></i><span></span>
+            </button>
+            <div class="admin-profile">
+              <img src="https://i.pravatar.cc/100?img=12" alt="Admin" />
+              <div>
+                <h6>Admin</h6>
+                <small>Administrator</small>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <section class="dashboard-body">
+          <!-- ============ DASHBOARD ============ -->
+          <div class="page" id="page-dashboard">
+            <div class="page-heading">
+              <div>
+                <h3>Overview</h3>
+                <p>Here's what's happening with your rental business.</p>
+              </div>
+              <label class="add-btn" for="r-cars"
+                ><i class="bi bi-plus-lg"></i> Add New Car</label
+              >
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon blue">
+                    <i class="bi bi-car-front-fill"></i>
+                  </div>
+                  <p>Total Cars</p>
+                  <h3>02</h3>
+                  <small>AVATR & BMW</small>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon green">
+                    <i class="bi bi-calendar-check"></i>
+                  </div>
+                  <p>Total Bookings</p>
+                  <h3>48</h3>
+                  <small>All reservations</small>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon orange">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <p>Total Revenue</p>
+                  <h3>$8,450</h3>
+                  <small>Monthly revenue</small>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon purple">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <p>Customers</p>
+                  <h3>35</h3>
+                  <small>Registered customers</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-heading">
+              <div>
+                <h5>My Cars</h5>
+                <p>Manage your available rental vehicles.</p>
+              </div>
+              <label for="r-cars"
+                >View All <i class="bi bi-arrow-right"></i
+              ></label>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-12 col-lg-6">
+                <div class="car-card">
+                  <div class="car-image">
+                    <span class="available">Available</span>
+                    <img
+                      src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900"
+                      alt="AVATR car"
+                    />
+                  </div>
+                  <div class="car-info">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5>AVATR 12</h5>
+                        <p>Electric Luxury Sedan</p>
+                      </div>
+                      <button class="more-btn">
+                        <i class="bi bi-three-dots"></i>
+                      </button>
+                    </div>
+                    <div class="car-details">
+                      <span
+                        ><i class="bi bi-lightning-charge"></i> Electric</span
+                      >
+                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <span><i class="bi bi-gear"></i> Automatic</span>
+                    </div>
+                    <hr />
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="price">$120 <small>/ day</small></h5>
+                      <button class="manage-btn">Manage Car</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="car-card">
+                  <div class="car-image">
+                    <span class="rented">Rented</span>
+                    <img
+                      src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=900"
+                      alt="BMW car"
+                    />
+                  </div>
+                  <div class="car-info">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5>BMW 5 Series</h5>
+                        <p>Luxury Sport Sedan</p>
+                      </div>
+                      <button class="more-btn">
+                        <i class="bi bi-three-dots"></i>
+                      </button>
+                    </div>
+                    <div class="car-details">
+                      <span><i class="bi bi-fuel-pump"></i> Petrol</span>
+                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <span><i class="bi bi-gear"></i> Automatic</span>
+                    </div>
+                    <hr />
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="price">$150 <small>/ day</small></h5>
+                      <button class="manage-btn">Manage Car</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <div class="section-heading">
+                <div>
+                  <h5>Recent Bookings</h5>
+                  <p>Latest customer reservations.</p>
+                </div>
+                <label for="r-bookings"
+                  >View All <i class="bi bi-arrow-right"></i
+                ></label>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Car Model</th>
+                      <th>Booking Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=11" /><span
+                            >John Smith</span
+                          >
+                        </div>
+                      </td>
+                      <td>AVATR 12</td>
+                      <td>Nov 15, 2026</td>
+                      <td>$240</td>
+                      <td><span class="status confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=12" /><span
+                            >David Wilson</span
+                          >
+                        </div>
+                      </td>
+                      <td>BMW 5 Series</td>
+                      <td>Nov 14, 2026</td>
+                      <td>$450</td>
+                      <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=13" /><span
+                            >Michael Lee</span
+                          >
+                        </div>
+                      </td>
+                      <td>AVATR 12</td>
+                      <td>Nov 13, 2026</td>
+                      <td>$360</td>
+                      <td><span class="status completed">Completed</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ MY CARS ============ -->
+          <div class="page" id="page-cars">
+            <div class="page-heading">
+              <div>
+                <h3>My Cars</h3>
+                <p>Manage your rental fleet.</p>
+              </div>
+              <button class="add-btn">
+                <i class="bi bi-plus-lg"></i> Add New Car
+              </button>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-12 col-lg-6">
+                <div class="car-card">
+                  <div class="car-image">
+                    <span class="available">Available</span>
+                    <img
+                      src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900"
+                      alt="AVATR car"
+                    />
+                  </div>
+                  <div class="car-info">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5>AVATR 12</h5>
+                        <p>Electric Luxury Sedan</p>
+                      </div>
+                      <button class="more-btn">
+                        <i class="bi bi-three-dots"></i>
+                      </button>
+                    </div>
+                    <div class="car-details">
+                      <span
+                        ><i class="bi bi-lightning-charge"></i> Electric</span
+                      >
+                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <span><i class="bi bi-gear"></i> Automatic</span>
+                    </div>
+                    <hr />
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="price">$120 <small>/ day</small></h5>
+                      <button class="manage-btn">Manage Car</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="car-card">
+                  <div class="car-image">
+                    <span class="rented">Rented</span>
+                    <img
+                      src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=900"
+                      alt="BMW car"
+                    />
+                  </div>
+                  <div class="car-info">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5>BMW 5 Series</h5>
+                        <p>Luxury Sport Sedan</p>
+                      </div>
+                      <button class="more-btn">
+                        <i class="bi bi-three-dots"></i>
+                      </button>
+                    </div>
+                    <div class="car-details">
+                      <span><i class="bi bi-fuel-pump"></i> Petrol</span>
+                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <span><i class="bi bi-gear"></i> Automatic</span>
+                    </div>
+                    <hr />
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="price">$150 <small>/ day</small></h5>
+                      <button class="manage-btn">Manage Car</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <div class="section-heading">
+                <div>
+                  <h5>Fleet Summary</h5>
+                  <p>Status and earnings per vehicle.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Car</th>
+                      <th>Type</th>
+                      <th>Rate / Day</th>
+                      <th>Total Bookings</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>AVATR 12</strong></td>
+                      <td>Electric</td>
+                      <td>$120</td>
+                      <td>26</td>
+                      <td><span class="status confirmed">Available</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>BMW 5 Series</strong></td>
+                      <td>Petrol</td>
+                      <td>$150</td>
+                      <td>22</td>
+                      <td><span class="status pending">Rented</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ BOOKINGS ============ -->
+          <div class="page" id="page-bookings">
+            <div class="page-heading">
+              <div>
+                <h3>Bookings</h3>
+                <p>All customer reservations.</p>
+              </div>
+              <button class="add-btn">
+                <i class="bi bi-plus-lg"></i> New Booking
+              </button>
+            </div>
+
+            <div class="booking-section">
+              <input
+                type="radio"
+                name="bfilter"
+                id="f-all"
+                class="sr"
+                checked
+              />
+              <input type="radio" name="bfilter" id="f-confirmed" class="sr" />
+              <input type="radio" name="bfilter" id="f-pending" class="sr" />
+              <input type="radio" name="bfilter" id="f-completed" class="sr" />
+              <input type="radio" name="bfilter" id="f-cancelled" class="sr" />
+
+              <div class="filter-bar">
+                <label for="f-all">All</label>
+                <label for="f-confirmed">Confirmed</label>
+                <label for="f-pending">Pending</label>
+                <label for="f-completed">Completed</label>
+                <label for="f-cancelled">Cancelled</label>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Customer</th>
+                      <th>Car Model</th>
+                      <th>Booking Date</th>
+                      <th>Days</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-status="confirmed">
+                      <td>#1048</td>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=11" /><span
+                            >John Smith</span
+                          >
+                        </div>
+                      </td>
+                      <td>AVATR 12</td>
+                      <td>Nov 15, 2026</td>
+                      <td>2</td>
+                      <td>$240</td>
+                      <td><span class="status confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr data-status="pending">
+                      <td>#1047</td>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=12" /><span
+                            >David Wilson</span
+                          >
+                        </div>
+                      </td>
+                      <td>BMW 5 Series</td>
+                      <td>Nov 14, 2026</td>
+                      <td>3</td>
+                      <td>$450</td>
+                      <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr data-status="completed">
+                      <td>#1046</td>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=13" /><span
+                            >Michael Lee</span
+                          >
+                        </div>
+                      </td>
+                      <td>AVATR 12</td>
+                      <td>Nov 13, 2026</td>
+                      <td>3</td>
+                      <td>$360</td>
+                      <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr data-status="completed">
+                      <td>#1045</td>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=14" /><span
+                            >Sarah Brown</span
+                          >
+                        </div>
+                      </td>
+                      <td>BMW 5 Series</td>
+                      <td>Nov 10, 2026</td>
+                      <td>2</td>
+                      <td>$300</td>
+                      <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr data-status="cancelled">
+                      <td>#1044</td>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=15" /><span
+                            >Emma Davis</span
+                          >
+                        </div>
+                      </td>
+                      <td>AVATR 12</td>
+                      <td>Nov 08, 2026</td>
+                      <td>1</td>
+                      <td>$120</td>
+                      <td><span class="status cancelled">Cancelled</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ CUSTOMERS ============ -->
+          <div class="page" id="page-customers">
+            <div class="page-heading">
+              <div>
+                <h3>Customers</h3>
+                <p>People who have rented from you.</p>
+              </div>
+              <button class="add-btn">
+                <i class="bi bi-person-plus"></i> Add Customer
+              </button>
+            </div>
+
+            <div class="booking-section">
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Bookings</th>
+                      <th>Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=11" /><span
+                            >John Smith</span
+                          >
+                        </div>
+                      </td>
+                      <td>john.smith@example.com</td>
+                      <td>+1 555 0101</td>
+                      <td>6</td>
+                      <td>Jan 12, 2026</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=12" /><span
+                            >David Wilson</span
+                          >
+                        </div>
+                      </td>
+                      <td>david.wilson@example.com</td>
+                      <td>+1 555 0102</td>
+                      <td>4</td>
+                      <td>Feb 03, 2026</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=13" /><span
+                            >Michael Lee</span
+                          >
+                        </div>
+                      </td>
+                      <td>michael.lee@example.com</td>
+                      <td>+1 555 0103</td>
+                      <td>9</td>
+                      <td>Mar 21, 2026</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=14" /><span
+                            >Sarah Brown</span
+                          >
+                        </div>
+                      </td>
+                      <td>sarah.brown@example.com</td>
+                      <td>+1 555 0104</td>
+                      <td>3</td>
+                      <td>Jun 08, 2026</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="customer">
+                          <img src="https://i.pravatar.cc/100?img=15" /><span
+                            >Emma Davis</span
+                          >
+                        </div>
+                      </td>
+                      <td>emma.davis@example.com</td>
+                      <td>+1 555 0105</td>
+                      <td>2</td>
+                      <td>Sep 17, 2026</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ PAYMENTS ============ -->
+          <div class="page" id="page-payments">
+            <div class="page-heading">
+              <div>
+                <h3>Payments</h3>
+                <p>Track income and transactions.</p>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon green">
+                    <i class="bi bi-cash-stack"></i>
+                  </div>
+                  <p>Received</p>
+                  <h3>$7,200</h3>
+                  <small>This month</small>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon orange">
+                    <i class="bi bi-hourglass-split"></i>
+                  </div>
+                  <p>Pending</p>
+                  <h3>$1,250</h3>
+                  <small>Awaiting payment</small>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon blue">
+                    <i class="bi bi-arrow-return-left"></i>
+                  </div>
+                  <p>Refunded</p>
+                  <h3>$120</h3>
+                  <small>This month</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <div class="section-heading">
+                <div>
+                  <h5>Transactions</h5>
+                  <p>Latest payment activity.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Transaction</th>
+                      <th>Customer</th>
+                      <th>Method</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>TXN-3021</td>
+                      <td>John Smith</td>
+                      <td><i class="bi bi-credit-card me-1"></i> Card</td>
+                      <td>Nov 15, 2026</td>
+                      <td>$240</td>
+                      <td><span class="status confirmed">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>TXN-3020</td>
+                      <td>David Wilson</td>
+                      <td><i class="bi bi-bank me-1"></i> Transfer</td>
+                      <td>Nov 14, 2026</td>
+                      <td>$450</td>
+                      <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>TXN-3019</td>
+                      <td>Michael Lee</td>
+                      <td><i class="bi bi-credit-card me-1"></i> Card</td>
+                      <td>Nov 13, 2026</td>
+                      <td>$360</td>
+                      <td><span class="status confirmed">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>TXN-3018</td>
+                      <td>Emma Davis</td>
+                      <td><i class="bi bi-credit-card me-1"></i> Card</td>
+                      <td>Nov 08, 2026</td>
+                      <td>$120</td>
+                      <td><span class="status cancelled">Refunded</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ SETTINGS ============ -->
+          <div class="page" id="page-settings">
+            <div class="page-heading">
+              <div>
+                <h3>Settings</h3>
+                <p>Manage your account and business details.</p>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <form>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Business Name</label
+                    ><input class="form-control" value="CAR. Rent" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Admin Name</label
+                    ><input class="form-control" value="Admin" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label
+                    ><input
+                      type="email"
+                      class="form-control"
+                      value="admin@carrent.com"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Phone</label
+                    ><input class="form-control" value="+1 555 0100" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Currency</label>
+                    <select class="form-select">
+                      <option>USD ($)</option>
+                      <option>EUR (€)</option>
+                      <option>KHR (៛)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Password</label
+                    ><input
+                      type="password"
+                      class="form-control"
+                      value="password"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="notif"
+                        checked
+                      /><label class="form-check-label" for="notif"
+                        >Email me about new bookings</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <button class="add-btn mt-4" type="button">Save Changes</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- ============ HELP CENTER ============ -->
+          <div class="page" id="page-help">
+            <div class="page-heading">
+              <div>
+                <h3>Help Center</h3>
+                <p>Answers to common questions.</p>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <div class="faq">
+                <details name="faq" open>
+                  <summary>How do I add a new car?</summary>
+                  <p>
+                    Open <strong>My Cars</strong> and click
+                    <em>Add New Car</em>, then fill in the model, type and daily
+                    rate.
+                  </p>
+                </details>
+                <details name="faq">
+                  <summary>How do I confirm a pending booking?</summary>
+                  <p>
+                    Go to <strong>Bookings</strong>, filter by
+                    <em>Pending</em> and review each reservation.
+                  </p>
+                </details>
+                <details name="faq">
+                  <summary>Where can I see my earnings?</summary>
+                  <p>
+                    The <strong>Payments</strong> page shows received, pending
+                    and refunded amounts with every transaction.
+                  </p>
+                </details>
+              </div>
+              <p class="mt-4 mb-0 text-secondary">
+                <i class="bi bi-envelope me-2"></i>Still stuck? Email
+                support@carrent.com
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
