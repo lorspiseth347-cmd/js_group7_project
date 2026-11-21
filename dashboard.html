@@ -15,6 +15,14 @@
     />
 
     <style>
+      .bi-trash3:hover {
+        color: red;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -47,7 +55,7 @@
         height: 100vh;
         background: #080836;
         color: white;
-        padding: 25px 18px;
+        padding: 10px 14px;
         flex-shrink: 0;
         position: sticky;
         top: 0;
@@ -56,9 +64,9 @@
         flex-direction: column;
       }
       .brand {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
       }
       .brand span {
         color: #ffc107;
@@ -75,7 +83,7 @@
         padding: 0;
       }
       .nav-menu li {
-        margin-bottom: 8px;
+        margin-bottom: 5px;
       }
       .nav-menu label {
         display: flex;
@@ -680,7 +688,7 @@
           </li>
         </ul>
 
-        <div class="menu-title mt-4">GENERAL</div>
+        <div class="menu-title mt-1">GENERAL</div>
         <ul class="nav-menu">
           <li>
             <label class="nav-item" for="r-settings"
@@ -698,7 +706,7 @@
         <a href="index.html">
           <div
             class="btn btn-outline-danger position-absolute bottom-0"
-            style="width: 200px; margin-bottom: 20px"
+            style="width: 200px; margin-bottom: 10px"
           >
             <i class="bi text-danger me-3 bi-box-arrow-right"></i>
             <span class="text-danger">Logout</span>
@@ -752,9 +760,169 @@
                 <h3>Overview</h3>
                 <p>Here's what's happening with your rental business.</p>
               </div>
-              <label class="add-btn" for="r-cars"
-                ><i class="bi bi-plus-lg"></i> Add New Car</label
+              <!-- add car -->
+
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
               >
+                Add new car
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="card shadow-sm border-0 rounded-4">
+                      <div class="card-header bg-white border-0 pt-2 px-4">
+                        <h4 class="fw-bold">Add New Car</h4>
+                        <p class="text-muted">
+                          Enter the information to add a new car.
+                        </p>
+                      </div>
+
+                      <div class="card-body px-4">
+                        <form>
+                          <!-- Car Image -->
+                          <div class="mb-2">
+                            <label class="form-label fw-semibold"
+                              >Car Image</label
+                            >
+                            <div
+                              class="border border-2 border-dashed rounded-3 p-4 text-center"
+                            >
+                              <i
+                                class="bi bi-cloud-arrow-up fs-1 text-primary"
+                              ></i>
+                              <p class="mb-1 fw-semibold">Upload car image</p>
+                              <small class="text-muted">PNG, JPG or JPEG</small>
+                              <input
+                                type="file"
+                                class="form-control mt-2"
+                                accept="image/*"
+                              />
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <!-- Car Name -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Car Name</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter car name"
+                              />
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Brand</label
+                              >
+                              <select class="form-select">
+                                <option selected disabled>Select brand</option>
+                                <option>BMW</option>
+                                <option>AVATR</option>
+                                <option>Toyota</option>
+                                <option>Mercedes-Benz</option>
+                              </select>
+                            </div>
+
+                            <!-- Model -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Model</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter model"
+                              />
+                            </div>
+
+                            <!-- Price -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Price / Day ($)</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Enter price"
+                              />
+                            </div>
+
+                            <!-- Seats -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Seats</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Number of seats"
+                              />
+                            </div>
+
+                            <!-- Fuel -->
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Fuel Type</label
+                              >
+                              <select class="form-select">
+                                <option selected disabled>
+                                  Select fuel type
+                                </option>
+                                <option>Electric</option>
+                                <option>Petrol</option>
+                                <option>Diesel</option>
+                                <option>Hybrid</option>
+                              </select>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label fw-semibold"
+                                >Description</label
+                              >
+                              <textarea
+                                class="form-control"
+                                rows="3"
+                                placeholder="Write car description..."
+                              ></textarea>
+                            </div>
+                          </div>
+
+                          <!-- Buttons -->
+                          <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button
+                              type="reset"
+                              class="btn btn-light border px-4"
+                            >
+                              Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary px-4">
+                              <i class="bi bi-plus-lg me-1"></i> Add Car
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="row g-3 mb-4">
@@ -764,7 +932,7 @@
                     <i class="bi bi-car-front-fill"></i>
                   </div>
                   <p>Total Cars</p>
-                  <h3>02</h3>
+                  <h3>14</h3>
                   <small>AVATR & BMW</small>
                 </div>
               </div>
@@ -774,7 +942,7 @@
                     <i class="bi bi-calendar-check"></i>
                   </div>
                   <p>Total Bookings</p>
-                  <h3>48</h3>
+                  <h3>0</h3>
                   <small>All reservations</small>
                 </div>
               </div>
@@ -784,7 +952,7 @@
                     <i class="bi bi-currency-dollar"></i>
                   </div>
                   <p>Total Revenue</p>
-                  <h3>$8,450</h3>
+                  <h3>$0</h3>
                   <small>Monthly revenue</small>
                 </div>
               </div>
@@ -794,7 +962,7 @@
                     <i class="bi bi-people-fill"></i>
                   </div>
                   <p>Customers</p>
-                  <h3>35</h3>
+                  <h3>0</h3>
                   <small>Registered customers</small>
                 </div>
               </div>
@@ -814,16 +982,13 @@
               <div class="col-12 col-lg-6">
                 <div class="car-card">
                   <div class="car-image">
-                    <span class="available">Available</span>
-                    <img
-                      src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900"
-                      alt="AVATR car"
-                    />
+                    <!-- <span class="available">Available</span> -->
+                    <img src="picture/avatar4.jpg" alt="AVATR car" />
                   </div>
                   <div class="car-info">
                     <div class="d-flex justify-content-between">
                       <div>
-                        <h5>AVATR 12</h5>
+                        <h5>AVATR</h5>
                         <p>Electric Luxury Sedan</p>
                       </div>
                       <button class="more-btn">
@@ -834,14 +999,14 @@
                       <span
                         ><i class="bi bi-lightning-charge"></i> Electric</span
                       >
-                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <!-- <span><i class="bi bi-people"></i> 5 Seats</span> -->
                       <span><i class="bi bi-gear"></i> Automatic</span>
                     </div>
                     <hr />
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
-                      <h5 class="price">$120 <small>/ day</small></h5>
+                      <h5 class="price">Available : 8</h5>
                       <button class="manage-btn">Manage Car</button>
                     </div>
                   </div>
@@ -851,7 +1016,7 @@
               <div class="col-12 col-lg-6">
                 <div class="car-card">
                   <div class="car-image">
-                    <span class="rented">Rented</span>
+                    <!-- <span class="rented">Rented</span> -->
                     <img
                       src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=900"
                       alt="BMW car"
@@ -860,7 +1025,7 @@
                   <div class="car-info">
                     <div class="d-flex justify-content-between">
                       <div>
-                        <h5>BMW 5 Series</h5>
+                        <h5 class="fw-bold">BMW</h5>
                         <p>Luxury Sport Sedan</p>
                       </div>
                       <button class="more-btn">
@@ -869,14 +1034,14 @@
                     </div>
                     <div class="car-details">
                       <span><i class="bi bi-fuel-pump"></i> Petrol</span>
-                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <!-- <span><i class="bi bi-people"></i> 5 Seats</span> -->
                       <span><i class="bi bi-gear"></i> Automatic</span>
                     </div>
                     <hr />
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
-                      <h5 class="price">$150 <small>/ day</small></h5>
+                      <h5 class="price">Available : 6</h5>
                       <button class="manage-btn">Manage Car</button>
                     </div>
                   </div>
@@ -987,15 +1152,17 @@
                       <span
                         ><i class="bi bi-lightning-charge"></i> Electric</span
                       >
-                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <!-- <span><i class="bi bi-people"></i> 5 Seats</span> -->
                       <span><i class="bi bi-gear"></i> Automatic</span>
                     </div>
                     <hr />
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
-                      <h5 class="price">$120 <small>/ day</small></h5>
-                      <button class="manage-btn">Manage Car</button>
+                      <h5 class="price">Available : 8</h5>
+                      <a href="#Electric">
+                        <button class="manage-btn">Manage Car</button></a
+                      >
                     </div>
                   </div>
                 </div>
@@ -1021,15 +1188,17 @@
                     </div>
                     <div class="car-details">
                       <span><i class="bi bi-fuel-pump"></i> Petrol</span>
-                      <span><i class="bi bi-people"></i> 5 Seats</span>
+                      <!-- <span><i class="bi bi-people"></i> 5 Seats</span> -->
                       <span><i class="bi bi-gear"></i> Automatic</span>
                     </div>
                     <hr />
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
-                      <h5 class="price">$150 <small>/ day</small></h5>
-                      <button class="manage-btn">Manage Car</button>
+                      <h5 class="price">Available : 6</h5>
+                      <a href="#Petrol">
+                        <button class="manage-btn">Manage Car</button>  
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -1039,7 +1208,7 @@
             <div class="booking-section">
               <div class="section-heading">
                 <div>
-                  <h5>Fleet Summary</h5>
+                  <h5 id="Electric">Fleet Electric Menagement</h5>
                   <p>Status and earnings per vehicle.</p>
                 </div>
               </div>
@@ -1052,22 +1221,188 @@
                       <th>Rate / Day</th>
                       <th>Total Bookings</th>
                       <th>Status</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><strong>AVATR 12</strong></td>
+                      <td><strong>AVATR 12 white</strong></td>
                       <td>Electric</td>
-                      <td>$120</td>
+                      <td>$45</td>
                       <td>26</td>
                       <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 12 black</strong></td>
+                      <td>Electric</td>
+                      <td>$45</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 06</strong></td>
+                      <td>Electric</td>
+                      <td>$35</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 07 black</strong></td>
+                      <td>Electric</td>
+                      <td>$30</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 07 darkgreen</strong></td>
+                      <td>Electric</td>
+                      <td>$30</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 06 white</strong></td>
+                      <td>Electric</td>
+                      <td>$25</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar 06 black</strong></td>
+                      <td>Electric</td>
+                      <td>$20</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Avatar Pro</strong></td>
+                      <td>Electric</td>
+                      <td>$50</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="booking-section">
+              <div class="section-heading">
+                <div>
+                  <h5 id="Petrol">Fleet Petrol Menagement</h5>
+                  <p>Status and earnings per vehicle.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Car</th>
+                      <th>Type</th>
+                      <th>Rate / Day</th>
+                      <th>Total Bookings</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>BMW M850i xDrive</strong></td>
+                      <td>Petrol</td>
+                      <td>$65</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>BMW 7 Series</strong></td>
+                      <td>Petrol</td>
+                      <td>$60</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
                     </tr>
                     <tr>
                       <td><strong>BMW 5 Series</strong></td>
                       <td>Petrol</td>
-                      <td>$150</td>
-                      <td>22</td>
-                      <td><span class="status pending">Rented</span></td>
+                      <td>$62</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>BMW X7</strong></td>
+                      <td>Petrol</td>
+                      <td>$50</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>BMW X1</strong></td>
+                      <td>Petrol</td>
+                      <td>$70</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>BMW X5</strong></td>
+                      <td>Petrol</td>
+                      <td>$60</td>
+                      <td>0</td>
+                      <td><span class="status confirmed">Available</span></td>
+                      <td>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3 ms-2"></i>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1508,5 +1843,11 @@
         </section>
       </main>
     </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
