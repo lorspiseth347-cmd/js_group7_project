@@ -16,43 +16,42 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <style>
-
       /* footer */
 
       .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-  .footer-links li {
-    margin-bottom: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 15px;
-  }
+      .footer-links li {
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+      }
 
-  .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: 0.3s ease;
-  }
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
 
-  .footer-links a:hover {
-    color: #ffc107;
-    padding-left: 6px;
-  }
+      .footer-links a:hover {
+        color: #ffc107;
+        padding-left: 6px;
+      }
 
-  /* Bottom Links */
-  .bottom-link {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-size: 13px;
-    transition: 0.3s;
-  }
+      /* Bottom Links */
+      .bottom-link {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.3s;
+      }
 
-  .bottom-link:hover {
-    color: #ffc107;
-  }
+      .bottom-link:hover {
+        color: #ffc107;
+      }
       /* Same card behavior as home.html */
       .card:hover {
         transform: translateY(-8px);
@@ -128,9 +127,12 @@
       style="height: auto"
     >
       <div class="container-fluid py-1">
-        <a class="navbar-brand fw-bold" href="home.html"
-          ><span class="text-warning py-1 fs-2">CAR.</span> Shop</a
-        >
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="home.html">
+          <span class="text-warning py-1 fs-2">CAR.</span> Rent
+        </a>
+
+        <!-- Toggle Button -->
         <button
           class="navbar-toggler"
           type="button"
@@ -142,25 +144,36 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Navbar Content -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navigation Links -->
           <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="home.html">Home</a>
-            </li>
             <li class="nav-item">
               <a
                 class="nav-link hover fw-bold active"
                 aria-current="page"
-                href="sopattra.html"
-                >About</a
+                href="home.html"
               >
+                Home
+              </a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="peakdey.html">Service</a>
+              <a class="nav-link hover fw-bold" href="sopattra.html"> About </a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link hover fw-bold" href="mengly.html">Contact</a>
+              <a class="nav-link hover fw-bold" href="peakdey.html">
+                Service
+              </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link hover fw-bold" href="mengly.html"> Contact </a>
+            </li>
+
+            <!-- Car Type Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link hover fw-bold dropdown-toggle"
@@ -172,26 +185,47 @@
               >
                 Car Type
               </a>
+
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Avatar</a></li>
-                <li><a class="dropdown-item" href="#">BMW</a></li>
-                <li><a class="dropdown-item" href="#">Lambogini</a></li>
+                <li>
+                  <a class="dropdown-item" href="carType/Avatar.html">
+                    Avatar
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="carType/BMW.html"> BMW </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="#"> Lamborghini </a>
+                </li>
               </ul>
             </li>
           </ul>
-          <form class="d-flex">
+
+          <!-- Search Form -->
+          <form class="d-flex align-items-center">
             <input
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
+
+            <!-- Account Icon -->
             <a class="text-dark px-1" href="#">
-              <i class="bi bi-person-fill-gear fs-4"></i
-            ></a>
-            <a class="text-dark px-2" href="#"
-              ><i class="bi bi-bag-check-fill fs-4"></i
-            ></a>
+              <i class="bi bi-person-fill-gear fs-4"></i>
+            </a>
+            <button
+              type="button"
+              class="btn text-dark border-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#bookingCart"
+              aria-controls="bookingCart"
+            >
+              <i class="bi bi-bag-check-fill fs-4"></i>
+            </button>
           </form>
         </div>
       </div>
@@ -220,9 +254,7 @@
                   class="btn btn-warning px-3 text-dark fw-bold py-2"
                   >Book Now</a
                 >
-                <a
-                  href="#team"
-                  class="btn btn-secondary ms-3 px-3 py-2 fw-bold"
+                <a href="#team" class="btn btn-secondary ms-3 px-3 py-2 fw-bold"
                   >Meet the team</a
                 >
               </div>
@@ -310,8 +342,8 @@
               <h1 class="fw-bold mt-3">A Team That Loves Cars and Customers</h1>
               <p class="text-muted">
                 We started CAR.Rent because renting a car should be simple. Our
-                team handles everything from choosing the right car to the
-                final return, so you can focus on your trip.
+                team handles everything from choosing the right car to the final
+                return, so you can focus on your trip.
               </p>
               <ul class="list-unstyled">
                 <li class="mt-2">
@@ -361,7 +393,10 @@
         <div class="col-12 col-md-6">
           <div class="card shadow h-100 mt-3">
             <div class="card-body p-4">
-              <div class="icon-circle mb-3" style="background-color: rgb(8, 8, 54)">
+              <div
+                class="icon-circle mb-3"
+                style="background-color: rgb(8, 8, 54)"
+              >
                 <i class="bi bi-eye-fill fs-2 text-warning"></i>
               </div>
               <h3 class="fw-bold">Our Vision</h3>
@@ -487,7 +522,15 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow h-100 overflow-hidden team-card">
             <div>
-              <img src="picture/sophattra.jpg" alt="Sophattra" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
+              <img
+                src="picture/sophattra.jpg"
+                alt="Sophattra"
+                class="team-photo"
+                onerror="
+                  this.outerHTML =
+                    '&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'
+                "
+              />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Oeung Sophattra</h5>
@@ -501,7 +544,15 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <img src="picture/pheakdey.PNG" alt="Pheakdey" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
+              <img
+                src="picture/pheakdey.PNG"
+                alt="Pheakdey"
+                class="team-photo"
+                onerror="
+                  this.outerHTML =
+                    '&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'
+                "
+              />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Leng Suopheakdey</h5>
@@ -515,7 +566,15 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <img src="picture/mengly.jpg" alt="Mengly" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
+              <img
+                src="picture/mengly.jpg"
+                alt="Mengly"
+                class="team-photo"
+                onerror="
+                  this.outerHTML =
+                    '&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'
+                "
+              />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Heng Mengly</h5>
@@ -529,7 +588,15 @@
         <div class="col-12 col-md-6 col-lg-3 mt-3">
           <div class="card shadow py-4 h-100">
             <div>
-              <img src="picture/pisethh.jpg" alt="Piseth" class="team-photo" onerror="this.outerHTML='&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'" />
+              <img
+                src="picture/pisethh.jpg"
+                alt="Piseth"
+                class="team-photo"
+                onerror="
+                  this.outerHTML =
+                    '&lt;span class=&quot;team-avatar&quot;&gt;&lt;i class=&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;&lt;/span&gt;'
+                "
+              />
             </div>
             <div class="card-body">
               <h5 class="fw-bold mb-1">Lors Piseth</h5>
@@ -559,7 +626,9 @@
           prices.
         </p>
         <div class="mt-4">
-          <a href="home.html" class="btn btn-warning px-4 text-dark fw-bold py-2"
+          <a
+            href="home.html"
+            class="btn btn-warning px-4 text-dark fw-bold py-2"
             >Book Now</a
           >
           <a href="mengly.html" class="btn btn-secondary ms-3 px-4 py-2 fw-bold"

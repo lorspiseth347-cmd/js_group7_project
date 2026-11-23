@@ -37,29 +37,110 @@
 </head>
 <body>
 
-    <!-- NAVBAR: navbar-expand (no toggle button, no JS needed) -->
-    <nav class="navbar navbar-expand navbar-light bg-light shadow sticky-top" style="height: auto">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top"
+      style="height: auto"
+    >
       <div class="container-fluid py-1">
-        <a class="navbar-brand fw-bold" href="home.html"><span class="text-warning py-1 fs-2">CAR.</span> Shop</a>
-        <div class="navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav m-auto mb-0">
-            <li class="nav-item"><a class="nav-link hover fw-bold" href="home.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link hover fw-bold" href="sopattra.html">About</a></li>
-            <li class="nav-item"><a class="nav-link hover fw-bold active" aria-current="page" href="peakdey.html">Service</a></li>
-            <li class="nav-item"><a class="nav-link hover fw-bold" href="mengly.html">Contact</a></li>
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="home.html">
+          <span class="text-warning py-1 fs-2">CAR.</span> Rent
+        </a>
+
+        <!-- Toggle Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navigation Links -->
+          <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link hover fw-bold active"
+                aria-current="page"
+                href="home.html"
+              >
+                Home
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link hover fw-bold" href="sopattra.html"> About </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link hover fw-bold" href="peakdey.html">
+                Service
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link hover fw-bold" href="mengly.html"> Contact </a>
+            </li>
+
+            <!-- Car Type Dropdown -->
             <li class="nav-item dropdown">
-              <a class="nav-link hover fw-bold dropdown-toggle" href="#" id="navbarDropdown">Car Type</a>
+              <a
+                class="nav-link hover fw-bold dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Car Type
+              </a>
+
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Avatar</a></li>
-                <li><a class="dropdown-item" href="#">BMW</a></li>
-                <li><a class="dropdown-item" href="#">Lamborghini</a></li>
+                <li>
+                  <a class="dropdown-item" href="carType/Avatar.html">
+                    Avatar
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="carType/BMW.html"> BMW </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="#"> Lamborghini </a>
+                </li>
               </ul>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <a class="text-dark px-1" href="#"><i class="bi bi-person-fill-gear fs-4"></i></a>
-            <a class="text-dark px-2" href="#"><i class="bi bi-bag-check-fill fs-4"></i></a>
+
+          <!-- Search Form -->
+          <form class="d-flex align-items-center">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+
+            <!-- Account Icon -->
+            <a class="text-dark px-1" href="#">
+              <i class="bi bi-person-fill-gear fs-4"></i>
+            </a>
+            <button
+              type="button"
+              class="btn text-dark border-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#bookingCart"
+              aria-controls="bookingCart"
+            >
+              <i class="bi bi-bag-check-fill fs-4"></i>
+            </button>
           </form>
         </div>
       </div>
